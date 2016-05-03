@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Wikipedia Viewer</title>
+    
+    
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
+
+        <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <div class="container" id="app">
+	<header></header>
+	<div class="page-header">
+		<h1>
+			Wikipedia Viewer
+			<small>
+				What do you want to learn?
+			</small>
+		</h1>
+	</div>
+	<div id="search-box">
+		<form  @submit.prevent>
+			<div class="form-group">
+				<div class="input-group">
+					<input type="text" name="query" id="query" class="form-control" placeholder="Type here ..." v-model="query" @keyup.enter="getWikipediaData(true)"/>
+					<div class="input-group-addon"><a href="#" v-on:click="getWikipediaData(true)">search</a></div>
+				</div>
+			</div>
+		</form>
+	</div> <!-- end of search-box -->
+	<div id="result-box">
+		<div class="alert alert-info text-center">
+			{{ alert }}
+		</div>
+		<div class="list-group" v-for="item in result">
+			<a href="{{ item.url }}" class="list-group-item">
+				<h2 class="list-group-item-heading">{{ item.title }}</h2>
+				<p class="list-group-item-text">{{{ item.body }}}</p>
+			</a>
+		</div> <!-- end of list-group -->
+	</div> <!-- end of result-box -->
+	<pre>
+		{{ query | json }}
+	</pre>
+</div> <!-- end of container -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js'></script>
+
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
