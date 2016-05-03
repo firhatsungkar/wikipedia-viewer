@@ -1,0 +1,26 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
+@import url("https://raw.github.com/daneden/animate.css/master/animate.css");
+/* line 3, ../scss/style.scss */
+body {
+  position: relative;
+}
+
+/* line 7, ../scss/style.scss */
+#result-box {
+  margin-top: 10px;
+}
+
+/* line 11, ../scss/style.scss */
+#up {
+  position: fixed;
+  bottom: 10px;
+  right: 50px;
+  font-size: 5em;
+}
+
+/* line 18, ../scss/style.scss */
+#footer {
+  position: relative;
+  margin-top: 10%;
+  width: 100%;
+}

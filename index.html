@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Wikipedia Viewer</title>
+    
+    
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
+
+        <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <div class="container" id="app">
+	<header></header>
+	<div class="page-header text-center">
+		<h1 class="tada">
+			Wikipedia Viewer
+			<small>
+				A free encyclopedia 
+			</small>
+		</h1>
+		<img src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png" alt="Wikipedia Logo">
+	</div>
+	<div id="search-box">
+		<form class="form-horizontal"  @submit.prevent>
+			<div class="form-group text-center">
+				<div class="col-md-6 col-md-offset-3">
+					<input type="text" name="query" id="query" class="form-control input-lg" placeholder="What do you want to learn today?" v-model="query" @keyup.enter="getWikipediaData(true)" autofocus />
+				</div>
+			</div>
+			<div class="form-group text-center">
+				<a href="#" class="btn btn-lg btn-default" v-on:click="getWikipediaData(true)">
+					<span>Search</span>
+					<i class="fa fa-search"></i>
+				</a>
+				<a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" class="btn  btn-lg btn-info">
+					<span>Random article</span>
+					<i class="fa fa-question-circle-o"></i>
+				</a>
+			</div>
+		</form>
+	</div> <!-- end of search-box -->
+	<div id="result-box" v-if="result.length > 0">
+		<div class="alert alert-info text-center">
+			{{ alert }}
+		</div>
+		<div class="list-group" v-for="item in result">
+			<a href="{{ item.url }}" class="list-group-item">
+				<h2 class="list-group-item-heading">{{ item.title }}</h2>
+				<p class="list-group-item-text">{{{ item.body }}}</p>
+			</a>
+		</div> <!-- end of list-group -->
+		<button class="btn btn-primary btn-lg btn-block" v-on:click="getWikipediaData(false)">
+			Load more ...
+		</button>
+	</div> <!-- end of result-box -->
+	<div id="up" v-if="up" transition="fade" class="animated">
+		<a href="#app">	
+			<i class="fa fa-arrow-circle-o-up"></i>
+		</a>
+	</div>
+</div> <!-- end of container -->
+<footer id="footer">
+	<p class="text-center">
+		<a href="http://mooohat.github.io/">
+			Copyright © Mohat Works 2016. All Rights Reserved
+		</a>
+	</p>
+</footer>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js'></script>
+<script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
